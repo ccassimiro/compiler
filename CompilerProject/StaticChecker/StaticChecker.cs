@@ -24,7 +24,6 @@ namespace StaticChecker
 
                 var splittedName = documentNameOrPath.Split('\\');
 
-
                 //"inteligência" para saber se foi informado um path completo ou apenas o nome do documento.
                 if (splittedName.Length > 1)
                 {
@@ -54,7 +53,7 @@ namespace StaticChecker
                 }
                 catch
                 {
-                    Console.WriteLine("Nenhum arquivo com esse nome foi encontrado. Verifique se o nome do arquivo ou caminho dele estão corretos e tente novamente.");
+                    Console.WriteLine("Nenhum arquivo com esse nome foi encontrado. Verifique se o nome do arquivo ou caminho dele estão corretos e tente novamente. Pressione ENTER para continuar");
                     Console.ReadKey();
                 }
 
