@@ -12,6 +12,7 @@ namespace StaticChecker
         public static IDictionary<string, string> reservedWords = new Dictionary<string, string>();
         public static IDictionary<string, string> reservedSymbols = new Dictionary<string, string>();
         public static IDictionary<string, string> reservedTypes = new Dictionary<string, string>();
+        public static int linha = 1;
 
         static void Main(string[] args)
         {
@@ -46,17 +47,23 @@ namespace StaticChecker
             }
 
             StreamReader reader;
-
+            char item;
 
             //Carrega elementos padrões da linguagem.
             LoadReservedSymbols();
             LoadReservedTypes();
             LoadReservedWords();
-
             reader = new StreamReader(@path);
+            LexicalAnalysis lexical = new LexicalAnalysis(reader);
+            Token token;
 
             do
             {
+                item = (char)reader.Read();
+                token = lexical.Analysis(item);
+
+
+                
 
             } while (!reader.EndOfStream);
 
