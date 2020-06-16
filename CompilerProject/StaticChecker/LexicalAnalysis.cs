@@ -187,10 +187,50 @@ namespace StaticChecker
                             return Token;
                         }
                         break;
+
                     case 1:
-
-
+                        if(char.IsLetterOrDigit(item))
+                        {
+                            AuxStr = AuxStr + item;
+                            if (!(char.IsLetterOrDigit((char)Reader.Peek())))
+                            {
+                                if (item != '-')
+                                    State = 24;
+                                else
+                                {
+                                    if (item == '\n')
+                                        StaticChecker.linha++;
+                                    item = (char)Reader.Read();
+                                }
+                            }
+                        }
                         break;
+
+                    case 2:
+                        if(!(char.IsDigit(item)))
+                        {
+                            AuxStr = AuxStr + item;
+                        }
+                        else if(item == '.')
+                        {
+                            AuxStr = AuxStr + item;
+                            State = 30;
+                        }
+
+                        if(!(char.IsDigit((char)Reader.Peek())) && (char)Reader.Peek() != '.' && State != 30)
+                        {
+                            State = 31;
+                        }
+                        else
+                        {
+                            if (item == '\n')
+                                StaticChecker.linha++;
+                            if (State != 30)
+                                item = (char)Reader.Read();
+                        }
+                        break;
+
+
                     default:
                         break;
                 }

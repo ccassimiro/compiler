@@ -56,7 +56,7 @@ namespace StaticChecker
             reader = new StreamReader(@path);
             LexicalAnalysis lexical = new LexicalAnalysis(reader);
             Token token;
-
+            
             do
             {
                 item = (char)reader.Read();
