@@ -210,7 +210,7 @@ namespace StaticChecker
                         break;
 
                     case 2:
-                        if(!(char.IsDigit(item)))
+                        if((char.IsDigit(item)))
                         {
                             AuxStr = AuxStr + item;
                         }
@@ -743,6 +743,7 @@ namespace StaticChecker
                                 Token.Code = "FUN";
                                 AddLine(StaticChecker.linha);
                                 Token.Size2 = ContChar;
+                                return Token;
                             }
                             else
                             {
@@ -751,6 +752,7 @@ namespace StaticChecker
                                 Token.Code = "IDT";
                                 AddLine(StaticChecker.linha);
                                 Token.Size2 = ContChar;
+                                return Token;
                             }
                             ClearToken();
                             State = 0;

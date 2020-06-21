@@ -16,7 +16,7 @@ namespace StaticChecker
 
         static void Main(string[] args)
         {
-            string documentNameOrPath, path;
+            string documentNameOrPath, path, name;
 
 
             Console.WriteLine("Digite o nome do arquivo ou caminho completo: ");
@@ -27,6 +27,10 @@ namespace StaticChecker
             //"inteligência" para saber se foi informado um path completo ou apenas o nome do documento.
             if (splittedName.Length > 1)
             {
+                var aux = splittedName[splittedName.Length-1];
+                var aux1 = aux.Split('.');
+                name = aux1[0];
+                name.ToUpper();
                 path = documentNameOrPath;
                 if (!File.Exists(path))
                 {
@@ -37,6 +41,8 @@ namespace StaticChecker
             }
             else
             {
+                name = documentNameOrPath;
+                name.ToUpper();
                 path = documentNameOrPath + ".201";
                 if (!File.Exists(path))
                 {
@@ -73,15 +79,16 @@ namespace StaticChecker
                         break;
 
                     default:
-                        if (tokensList.Exists(x => x.Lexeme == token.Lexeme));
-                        if(token.AppearedInLines.Count < 5)
+                        if (tokensList.Exists(x => x.Lexeme == token.Lexeme))
                         {
-                            token.AppearedInLines.Add(token.AppearedInLines[0]);
+                            Token t = tokensList.Find(x => x.Lexeme == token.Lexeme);
+                            if (t.AppearedInLines.Count < 5)
+                                t.AppearedInLines.Add(token.AppearedInLines[0]);
                         }
                         else
                         {
                             List<int> lines = new List<int>();
-                            foreach(int line in token.AppearedInLines)
+                            foreach (int line in token.AppearedInLines)
                             {
                                 lines.Add(line);
                             }
@@ -101,10 +108,10 @@ namespace StaticChecker
             Report report = new Report();
 
             //Relatório da análise léxica:
-            report.CreateLexicalReport(tokensListLexicalAnalisys, path, tokensList);
+            report.CreateLexicalReport(tokensListLexicalAnalisys, name, tokensList);
 
             //Relatório da tabela de símbolos:
-            report.CreateSymbolTableReport(path, tokensList);
+            report.CreateSymbolTableReport(name, tokensList);
 
 
             Console.WriteLine("Programa finalizado. Pressione ENTER para continuar");
