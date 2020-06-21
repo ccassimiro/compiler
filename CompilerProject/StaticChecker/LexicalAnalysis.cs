@@ -199,13 +199,22 @@ namespace StaticChecker
                             AuxStr = AuxStr + item;
                             if (!(char.IsLetterOrDigit((char)Reader.Peek())))
                             {
-                                if (item != '-')
-                                    State = 24;
+                                var aux = (char)Reader.Peek();
+                                if (aux != '@')
+                                {
+                                    if (item != '-')
+                                        State = 24;
+                                }
+                                else
+                                {
+                                    item = (char)Reader.Read();
+                                }
                             }
                             else
                                 if (item == '\n')
                                     StaticChecker.linha++;
                             item = (char)Reader.Read();
+                            var teste = (char)Reader.Peek();
                         }
                         break;
 
@@ -729,6 +738,7 @@ namespace StaticChecker
                     case 36:
                         if ((char.IsLetterOrDigit((char)Reader.Peek())) || (char)Reader.Peek() == '_')
                         {
+                            var teste = (char)Reader.Peek();
                             item = (char)Reader.Read();
                             if (AuxStr.Length < 30)
                                 AuxStr = AuxStr + item;
