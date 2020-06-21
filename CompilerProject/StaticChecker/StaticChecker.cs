@@ -47,7 +47,10 @@ namespace StaticChecker
             }
 
             StreamReader reader;
+            List<Token> tokensList = new List<Token>();
+            List<Token> tokensListLexicalAnalisys = new List<Token>();
             char item;
+            int count = 0;
 
             //Carrega elementos padrões da linguagem.
             LoadReservedSymbols();
@@ -62,10 +65,38 @@ namespace StaticChecker
                 item = (char)reader.Read();
                 token = lexical.Analysis(item);
 
+                switch (token.Code)
+                {
+                    case "INE":
+                        break;
+                    case "COM":
+                        break;
 
-                
+                    default:
+                        if (tokensList.Exists(x => x.Lexeme == token.Lexeme));
+                        if(token.AppearedInLines.Count < 5)
+                        {
+                            token.AppearedInLines.Add(token.AppearedInLines[0]);
+                        }
+                        else
+                        {
+                            List<int> lines = new List<int>();
+                            foreach(int line in token.AppearedInLines)
+                            {
+                                lines.Add(line);
+                            }
+                            tokensList.Add(new Token(token, lines));
+                        }
+                        tokensListLexicalAnalisys.Add(new Token(token));
+                        break;
+                }
+                count++;
+                lexical.ClearToken();
 
             } while (!reader.EndOfStream);
+
+            reader.Close();
+            reader.Dispose();
 
 
             Console.WriteLine("Programa finalizado. Pressione ENTER para continuar");

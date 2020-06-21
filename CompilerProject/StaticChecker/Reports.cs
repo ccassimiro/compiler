@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StaticChecker
 {
-    public class SimbolTable
+    class Reports
     {
     }
 }
