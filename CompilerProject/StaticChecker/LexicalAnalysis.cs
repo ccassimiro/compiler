@@ -61,8 +61,9 @@ namespace StaticChecker
             item = Char.ToUpper(item);
 
             //Início da Análise
-            while (true)
+            while ('T' == 'T')
             {
+                item = char.ToUpper(item);
                 switch (State)
                 {
                     case 0:
@@ -200,13 +201,11 @@ namespace StaticChecker
                             {
                                 if (item != '-')
                                     State = 24;
-                                else
-                                {
-                                    if (item == '\n')
-                                        StaticChecker.linha++;
-                                    item = (char)Reader.Read();
-                                }
                             }
+                            else
+                                if (item == '\n')
+                                    StaticChecker.linha++;
+                            item = (char)Reader.Read();
                         }
                         break;
 

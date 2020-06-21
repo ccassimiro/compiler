@@ -98,6 +98,14 @@ namespace StaticChecker
             reader.Close();
             reader.Dispose();
 
+            Report report = new Report();
+
+            //Relatório da análise léxica:
+            report.CreateLexicalReport(tokensListLexicalAnalisys, path, tokensList);
+
+            //Relatório da tabela de símbolos:
+            report.CreateSymbolTableReport(path, tokensList);
+
 
             Console.WriteLine("Programa finalizado. Pressione ENTER para continuar");
             Console.ReadKey();

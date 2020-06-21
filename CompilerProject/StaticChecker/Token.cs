@@ -19,7 +19,7 @@ namespace StaticChecker
 
         public Token()
         {
-
+            this.AppearedInLines = new List<int>();
         }
 
         public Token(Token t, List<int> appearedInLines)
