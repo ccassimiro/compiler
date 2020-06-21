@@ -1,7 +1,6 @@
 C:\Users\lcass\Documents\Projects\compiler\CompilerProject\StaticChecker\bin\Debug\StaticChecker.exe.config
 C:\Users\lcass\Documents\Projects\compiler\CompilerProject\StaticChecker\bin\Debug\StaticChecker.exe
 C:\Users\lcass\Documents\Projects\compiler\CompilerProject\StaticChecker\bin\Debug\StaticChecker.pdb
-C:\Users\lcass\Documents\Projects\compiler\CompilerProject\StaticChecker\obj\Debug\StaticChecker.csprojAssemblyReference.cache
 C:\Users\lcass\Documents\Projects\compiler\CompilerProject\StaticChecker\obj\Debug\StaticChecker.csproj.CoreCompileInputs.cache
 C:\Users\lcass\Documents\Projects\compiler\CompilerProject\StaticChecker\obj\Debug\StaticChecker.exe
 C:\Users\lcass\Documents\Projects\compiler\CompilerProject\StaticChecker\obj\Debug\StaticChecker.pdb

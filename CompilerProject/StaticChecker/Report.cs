@@ -16,9 +16,9 @@ namespace StaticChecker
 
         }
 
-        public void CreateLexicalReport(List<Token> tokenList, string path, List<Token> symbolTable)
+        public void CreateLexicalReport(List<Token> tokenList, string name, List<Token> symbolTable)
         {
-            lexicalReport = File.CreateText(path + ".LEX");
+            lexicalReport = File.CreateText(name + ".LEX");
             lexicalReport.WriteLine("RELATORIO DA ANALISE LEXICA");
             lexicalReport.WriteLine("CODIGO DA EQUIPE: E03");
             lexicalReport.WriteLine("COMPONENTES:");
@@ -39,9 +39,9 @@ namespace StaticChecker
             lexicalReport.Close();
         }
 
-        public void CreateSymbolTableReport(string path, List<Token> symbolTable)
+        public void CreateSymbolTableReport(string name, List<Token> symbolTable)
         {
-            tableReport = File.CreateText(path + ".TAB");
+            tableReport = File.CreateText(name + ".TAB");
             tableReport.WriteLine("RELATORIO DA TABELA DE SÍMBOLOS");
             tableReport.WriteLine("CODIGO DA EQUIPE: E03");
             tableReport.WriteLine("COMPONENTES:");

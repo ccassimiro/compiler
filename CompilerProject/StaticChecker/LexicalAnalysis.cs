@@ -764,8 +764,6 @@ namespace StaticChecker
                                 Token.Size2 = ContChar;
                                 return Token;
                             }
-                            ClearToken();
-                            State = 0;
                         }
                         break;
 
